@@ -1,0 +1,216 @@
+﻿CREATE DATABASE QLYBANHANG
+GO
+USE QLYBANHANG
+GO
+CREATE TABLE TAIKHOAN(
+	TAIKHOAN VARCHAR(50) PRIMARY KEY ,
+	MATKHAU VARCHAR (100) DEFAULT 0,
+	HOTEN NVARCHAR (35),
+	PHANQUYEN INT DEFAULT 0 -- 0: NHANVIEN, 1: QUANLY
+	)
+GO 
+CREATE TABLE LOAISP(
+	MALOAISP VARCHAR(10) PRIMARY KEY,
+	TENLOAISP NVARCHAR(50)
+	)
+GO
+CREATE TABLE SANPHAM(
+	MASP VARCHAR(10) PRIMARY KEY,
+	TENSP NVARCHAR(50),
+	MAlOAISP VARCHAR(10),
+	GIA FLOAT DEFAULT 0, -- MAT DINH GIA BANG  0
+	FOREIGN KEY (MAlOAISP) REFERENCES dbo.LOAISP (MALOAISP)
+	)
+GO
+CREATE TABLE HOADON(
+	SOHD INT IDENTITY PRIMARY KEY,
+	NGAYLAP DATE DEFAULT GETDATE(),
+	TONGTIEN FLOAT,
+	TRANGTHAI INT, -- 0: CHUATHANHTOAN, 1: DATHANHTOAN
+	)
+GO
+CREATE TABLE CTHD(
+	SOCTHD INT IDENTITY PRIMARY KEY,
+	SOHD INT,
+	MASP VARCHAR(10),
+	SOLUONG INT,
+	FOREIGN KEY (SOHD) REFERENCES dbo.HOADON (SOHD),
+	FOREIGN KEY (MASP) REFERENCES dbo.SANPHAM (MASP)
+	)
+GO 
+INSERT dbo.TAIKHOAN
+(
+    TAIKHOAN,
+    MATKHAU,
+    HOTEN,
+    PHANQUYEN
+)
+VALUES
+(   'admin',      -- TAIKHOAN - varchar(50)
+    'admin', -- MATKHAU - varchar(100)
+    'Giang',    -- HOTEN - nvarchar(35)
+    1  -- PHANQUYEN - int
+    )
+
+INSERT dbo.TAIKHOAN
+(
+    TAIKHOAN,
+    MATKHAU,
+    HOTEN,
+    PHANQUYEN
+)
+VALUES
+(   'user',      -- TAIKHOAN - varchar(50)
+    'user', -- MATKHAU - varchar(100)
+    'phuong',    -- HOTEN - nvarchar(35)
+    DEFAULT  -- PHANQUYEN - int
+    )
+
+	INSERT dbo.LOAISP
+	(
+	    MALOAISP,
+	    TENLOAISP
+	)
+	VALUES
+	(   'GD001',  -- MALOAISP - varchar(10)
+	    'Gia dụng'  -- TENLOAISP - nvarchar(50)
+	    )
+	INSERT dbo.LOAISP
+	(
+	    MALOAISP,
+	    TENLOAISP
+	)
+	VALUES
+	(   'GV001',  -- MALOAISP - varchar(10)
+	    'Gia vị' -- TENLOAISP - nvarchar(50)
+	    )
+	INSERT dbo.LOAISP
+	(
+	    MALOAISP,
+	    TENLOAISP
+	)
+	VALUES
+	(   'DC001',  -- MALOAISP - varchar(10)
+	    'Dụng cụ' -- TENLOAISP - nvarchar(50)
+	    )
+
+	INSERT dbo.SANPHAM
+	(
+	    MASP,
+	    TENSP,
+	    MAlOAISP,
+	    GIA
+	)
+	VALUES
+	(   'CH001',     -- MASP - varchar(10)
+	    'Chuổi',   -- TENSP - nvarchar(50)
+		'DC001',   -- MAlOAISP - varchar(10)
+	    30000 -- GIA - float
+	    )
+	INSERT dbo.SANPHAM
+	(
+	    MASP,
+	    TENSP,
+	    MAlOAISP,
+	    GIA
+	)
+	VALUES
+	(   'HR001',     -- MASP - varchar(10)
+	    'Hốt rác',   -- TENSP - nvarchar(50)
+	    'DC001',   -- MAlOAISP - varchar(10)
+	    20000 -- GIA - float
+	)
+	INSERT dbo.SANPHAM
+	(
+	    MASP,
+	    TENSP,
+	    MAlOAISP,
+	    GIA
+	)
+	VALUES
+	(   'MU001',     -- MASP - varchar(10)
+	    'Muối',   -- TENSP - nvarchar(50)
+	    'GV001',   -- MAlOAISP - varchar(10)
+	    5000 -- GIA - float
+	    )
+	INSERT dbo.SANPHAM
+	(
+	    MASP,
+	    TENSP,
+	    MAlOAISP,
+	    GIA
+	)
+	VALUES
+	(   'DG001',     -- MASP - varchar(10)
+	    'Đường',   -- TENSP - nvarchar(50)
+	    'GV001',   -- MAlOAISP - varchar(10)
+	    20000 -- GIA - float
+	    )
+	INSERT dbo.SANPHAM
+	(
+	    MASP,
+	    TENSP,
+	    MAlOAISP,
+	    GIA
+	)
+	VALUES
+	(   'BN001',     -- MASP - varchar(10)
+	    'Bột ngọt',   -- TENSP - nvarchar(50)
+	    'GV001',   -- MAlOAISP - varchar(10)
+	    35000 -- GIA - float
+	    )
+	INSERT dbo.SANPHAM
+	(
+	    MASP,
+	    TENSP,
+	    MAlOAISP,
+	    GIA
+	)
+	VALUES
+	(   'NN001',     -- MASP - varchar(10)
+	    'Nồi nhôm',   -- TENSP - nvarchar(50)
+	    'GD001',   -- MAlOAISP - varchar(10)
+	    50000 -- GIA - float
+	    )
+GO
+CREATE PROC DANGNHAP
+@TENDANGNHAP VARCHAR(50),
+@MATKHAU VARCHAR(100)
+AS
+BEGIN 
+	SELECT * FROM dbo.TAIKHOAN WHERE TAIKHOAN = @TENDANGNHAP AND MATKHAU = @MATKHAU
+END
+GO
+CREATE OR ALTER PROC CAPNHATTAIKHOAN
+@TENDANGNHAP VARCHAR(50),
+@HOTEN NVARCHAR(35),
+@MATKHAU VARCHAR(100)
+AS
+BEGIN
+	BEGIN
+		DECLARE @MK INT = 0
+		SELECT @MK = COUNT(*) FROM dbo.TAIKHOAN WHERE TAIKHOAN = @TENDANGNHAP AND MATKHAU = @MATKHAU
+		IF(@MK = 1)
+		BEGIN
+			UPDATE dbo.TAIKHOAN SET HOTEN = @HOTEN WHERE TAIKHOAN = @TENDANGNHAP
+		END
+	END
+END
+GO
+CREATE OR ALTER PROC CAPNHATMATKHAU
+@TENDANGNHAP VARCHAR(50),
+@MATKHAU VARCHAR(100),
+@MATKHAUMOI VARCHAR(100)
+AS
+BEGIN
+	BEGIN
+		DECLARE @MK INT = 0
+		SELECT @MK = COUNT(*) FROM dbo.TAIKHOAN WHERE TAIKHOAN = @TENDANGNHAP AND MATKHAU = @MATKHAU
+		IF(@MK = 1)
+		BEGIN
+			UPDATE dbo.TAIKHOAN SET MATKHAU = @MATKHAUMOI WHERE TAIKHOAN = @TENDANGNHAP
+		END
+	END
+END
+
+GO
