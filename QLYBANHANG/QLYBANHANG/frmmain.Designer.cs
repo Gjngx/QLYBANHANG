@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem6 = new DevExpress.Utils.ToolTipItem();
             this.fdfcontainer = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
             this.accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
             this.acenhanvien = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -61,10 +61,10 @@
             // fdfcontainer
             // 
             this.fdfcontainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fdfcontainer.Location = new System.Drawing.Point(351, 31);
+            this.fdfcontainer.Location = new System.Drawing.Point(217, 31);
             this.fdfcontainer.Margin = new System.Windows.Forms.Padding(2);
             this.fdfcontainer.Name = "fdfcontainer";
-            this.fdfcontainer.Size = new System.Drawing.Size(1083, 783);
+            this.fdfcontainer.Size = new System.Drawing.Size(1112, 739);
             this.fdfcontainer.TabIndex = 0;
             // 
             // accordionControl1
@@ -78,7 +78,7 @@
             this.accordionControl1.Margin = new System.Windows.Forms.Padding(2);
             this.accordionControl1.Name = "accordionControl1";
             this.accordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
-            this.accordionControl1.Size = new System.Drawing.Size(351, 783);
+            this.accordionControl1.Size = new System.Drawing.Size(217, 739);
             this.accordionControl1.TabIndex = 1;
             this.accordionControl1.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             // 
@@ -163,7 +163,7 @@
             this.fluentDesignFormControl1.Manager = this.fluentFormDefaultManager1;
             this.fluentDesignFormControl1.Margin = new System.Windows.Forms.Padding(2);
             this.fluentDesignFormControl1.Name = "fluentDesignFormControl1";
-            this.fluentDesignFormControl1.Size = new System.Drawing.Size(1434, 31);
+            this.fluentDesignFormControl1.Size = new System.Drawing.Size(1329, 31);
             this.fluentDesignFormControl1.TabIndex = 2;
             this.fluentDesignFormControl1.TabStop = false;
             this.fluentDesignFormControl1.TitleItemLinks.Add(this.bsitaikhoan, true);
@@ -197,9 +197,9 @@
             this.barSubItem3.Caption = "barSubItem3";
             this.barSubItem3.Id = 4;
             this.barSubItem3.Name = "barSubItem3";
-            toolTipItem1.Text = "Cập nhật  thông tin";
-            superToolTip1.Items.Add(toolTipItem1);
-            this.barSubItem3.SuperTip = superToolTip1;
+            toolTipItem6.Text = "Cập nhật  thông tin";
+            superToolTip6.Items.Add(toolTipItem6);
+            this.barSubItem3.SuperTip = superToolTip6;
             // 
             // barSubItem4
             // 
@@ -258,7 +258,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1434, 814);
+            this.ClientSize = new System.Drawing.Size(1329, 770);
             this.ControlContainer = this.fdfcontainer;
             this.Controls.Add(this.fdfcontainer);
             this.Controls.Add(this.accordionControl1);
