@@ -54,6 +54,8 @@
   <ItemGroup>
     <Compile Include="DAO\DataProvider.cs" />
     <Compile Include="DAO\taikhoanDAO.cs" />
+    <Compile Include="DTO\loaisp.cs" />
+    <Compile Include="DTO\sanpham.cs" />
     <Compile Include="DTO\taikhoan.cs" />
     <Compile Include="frmcapnhatthongtin.cs">
       <SubType>Form</SubType>
