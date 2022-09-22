@@ -43,6 +43,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btngiamgia = new System.Windows.Forms.Button();
+            this.txbgiamgia = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.btnthanhtoan = new System.Windows.Forms.Button();
             this.lsvhoadon = new System.Windows.Forms.ListView();
             this.chtensanpham = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -53,11 +55,9 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txbtongtien = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txbgiamgia = new System.Windows.Forms.TextBox();
             this.MaSanPham = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenSanPham = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaLoaiSanPham = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenLoaiSanPham = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Gia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvtimsanpham)).BeginInit();
@@ -114,7 +114,7 @@
             this.dgvtimsanpham.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaSanPham,
             this.TenSanPham,
-            this.MaLoaiSanPham,
+            this.TenLoaiSanPham,
             this.Gia});
             this.dgvtimsanpham.Location = new System.Drawing.Point(2, 172);
             this.dgvtimsanpham.Margin = new System.Windows.Forms.Padding(2);
@@ -138,7 +138,6 @@
             this.nudsoluong.Size = new System.Drawing.Size(266, 27);
             this.nudsoluong.TabIndex = 8;
             this.nudsoluong.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.nudsoluong.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // label4
             // 
@@ -202,6 +201,7 @@
             this.btntim.TabIndex = 2;
             this.btntim.Text = "Tìm";
             this.btntim.UseVisualStyleBackColor = true;
+            this.btntim.Click += new System.EventHandler(this.btntim_Click);
             // 
             // txbtimmasp
             // 
@@ -251,6 +251,26 @@
             this.btngiamgia.TabIndex = 10;
             this.btngiamgia.Text = "Giảm giá";
             this.btngiamgia.UseVisualStyleBackColor = true;
+            // 
+            // txbgiamgia
+            // 
+            this.txbgiamgia.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbgiamgia.Location = new System.Drawing.Point(124, 92);
+            this.txbgiamgia.Margin = new System.Windows.Forms.Padding(2);
+            this.txbgiamgia.Name = "txbgiamgia";
+            this.txbgiamgia.Size = new System.Drawing.Size(199, 27);
+            this.txbgiamgia.TabIndex = 9;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(21, 94);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(78, 19);
+            this.label8.TabIndex = 8;
+            this.label8.Text = "Giảm giá:";
             // 
             // btnthanhtoan
             // 
@@ -337,26 +357,6 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "Tổng tiền:";
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(21, 94);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(78, 19);
-            this.label8.TabIndex = 8;
-            this.label8.Text = "Giảm giá:";
-            // 
-            // txbgiamgia
-            // 
-            this.txbgiamgia.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbgiamgia.Location = new System.Drawing.Point(124, 92);
-            this.txbgiamgia.Margin = new System.Windows.Forms.Padding(2);
-            this.txbgiamgia.Name = "txbgiamgia";
-            this.txbgiamgia.Size = new System.Drawing.Size(199, 27);
-            this.txbgiamgia.TabIndex = 9;
-            // 
             // MaSanPham
             // 
             this.MaSanPham.DataPropertyName = "MaSanPham";
@@ -369,11 +369,11 @@
             this.TenSanPham.HeaderText = "Tên sản phẩm";
             this.TenSanPham.Name = "TenSanPham";
             // 
-            // MaLoaiSanPham
+            // TenLoaiSanPham
             // 
-            this.MaLoaiSanPham.DataPropertyName = "MaLoai";
-            this.MaLoaiSanPham.HeaderText = "Mã loại sản phẩm";
-            this.MaLoaiSanPham.Name = "MaLoaiSanPham";
+            this.TenLoaiSanPham.DataPropertyName = "TenLoai";
+            this.TenLoaiSanPham.HeaderText = "Tên loại";
+            this.TenLoaiSanPham.Name = "TenLoaiSanPham";
             // 
             // Gia
             // 
@@ -390,7 +390,6 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "uchoadon";
             this.Size = new System.Drawing.Size(1110, 737);
-            this.Load += new System.EventHandler(this.uchoadon_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvtimsanpham)).EndInit();
@@ -433,7 +432,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaSanPham;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenSanPham;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaLoaiSanPham;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenLoaiSanPham;
         private System.Windows.Forms.DataGridViewTextBoxColumn Gia;
     }
 }

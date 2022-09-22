@@ -18,9 +18,9 @@ namespace QLYBANHANG.DAO
         }
 
         private hoadonDAO() { }
-        public List<sanpham> dssanpham()
+        public List<sanphamhd> dssanpham()
         {
-            List<sanpham> ds = new List<sanpham>();
+            List<sanphamhd> ds = new List<sanphamhd>();
 
             string query = "EXEC TAIDSSANPHAM";
 
@@ -28,10 +28,41 @@ namespace QLYBANHANG.DAO
 
             foreach (DataRow item in data.Rows)
             {
-                sanpham m = new sanpham(item);
+                sanphamhd m = new sanphamhd(item);
                 ds.Add(m);
             }
 
+            return ds;
+        }
+        public List<loaisp> xuatdsloai()
+        {
+            List<loaisp> ds = new List<loaisp>();
+
+            string query = "SELECT * FROM dbo.LOAISP";
+
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+
+            foreach (DataRow item in data.Rows)
+            {
+                loaisp loai = new loaisp(item);
+                ds.Add(loai);
+            }
+            return ds;
+        }
+
+        public List<sanphamhd> timsanpham(string masanpham)
+        {
+            List<sanphamhd> ds = new List<sanphamhd>();
+
+            string query = string.Format("SELECT TENLOAISP, MASP, TENSP, GIA  FROM dbo.SANPHAM, dbo.LOAISP WHERE SANPHAM.MAlOAISP = LOAISP.MALOAISP AND MASP LIKE N'%{0}%'", masanpham);
+
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+
+            foreach (DataRow item in data.Rows)
+            {
+                sanphamhd m = new sanphamhd(item);
+                ds.Add(m);
+            }
             return ds;
         }
     }
