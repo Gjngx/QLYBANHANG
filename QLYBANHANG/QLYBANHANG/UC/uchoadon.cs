@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraEditors;
+using QLYBANHANG.DAO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,6 +16,7 @@ namespace QLYBANHANG.UC
     {
         private static uchoadon instance;
 
+        BindingSource dssanpham = new BindingSource(); 
         public static uchoadon Instance
         {
             get
@@ -24,13 +26,28 @@ namespace QLYBANHANG.UC
                 return instance;
             }
         }
+
+        public void sanphamBinding()
+        {
+            txbtimmasp.DataBindings.Add(new Binding("Text", dgvtimsanpham.DataSource, "Masanpham", true, DataSourceUpdateMode.Never));
+            txbtensanpham.DataBindings.Add(new Binding("Text", dgvtimsanpham.DataSource, "Tensanpham", true, DataSourceUpdateMode.Never));
+        }
+
+        void taidsmon()
+        {
+            dssanpham.DataSource = hoadonDAO.Instance.dssanpham();
+        }
         public uchoadon()
         {
             InitializeComponent();
+            dgvtimsanpham.DataSource = dssanpham;
+            taidsmon();
+            sanphamBinding();
         }
 
         private void uchoadon_Load(object sender, EventArgs e)
         {
+
 
         }
 

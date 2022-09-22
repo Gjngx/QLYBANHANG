@@ -9,16 +9,16 @@ namespace QLYBANHANG.DTO
 {
     public class loaisp
     {
-        public loai(string maloai, string tenloai)
+        public loaisp(string maloai, string tenloai)
         {
             this.Maloai = maloai;
             this.Tenloai = tenloai;
         }
 
-        public loai(DataRow row)
+        public loaisp(DataRow row)
         {
-            this.Maloai = row["maloaisp"].ToString();
-            this.tenloai = row["tenloaisp"].ToString();
+            this.Maloai = row["MALOAISP"].ToString();
+            this.tenloai = row["TENLOAISP"].ToString();
         }
 
         private string maloai;

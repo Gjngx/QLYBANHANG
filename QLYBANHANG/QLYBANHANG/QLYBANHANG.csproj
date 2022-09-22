@@ -53,7 +53,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAO\DataProvider.cs" />
+    <Compile Include="DAO\hoadonDAO.cs" />
     <Compile Include="DAO\taikhoanDAO.cs" />
+    <Compile Include="DTO\cthd.cs" />
+    <Compile Include="DTO\hoadon.cs" />
     <Compile Include="DTO\loaisp.cs" />
     <Compile Include="DTO\sanpham.cs" />
     <Compile Include="DTO\taikhoan.cs" />
