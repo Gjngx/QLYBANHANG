@@ -61,6 +61,7 @@
     <Compile Include="DTO\sanpham.cs" />
     <Compile Include="DTO\sanphamhd.cs" />
     <Compile Include="DTO\taikhoan.cs" />
+    <Compile Include="DTO\taohoadon.cs" />
     <Compile Include="frmcapnhatthongtin.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -65,5 +65,61 @@ namespace QLYBANHANG.DAO
             }
             return ds;
         }
+
+        public void taohd()
+        {
+            DataProvider.Instance.ExecuteNonQuery("EXEC THEMHD");
+        }
+
+        public void themcthd(int sohd, string masp, int soluong)
+        {
+            DataProvider.Instance.ExecuteNonQuery("THEMCTHD @sohd , @masp , @soluong ", new object[] { sohd, masp, soluong });
+        }
+        public int xuatmahoadon()
+        {
+            try
+            {
+                return (int)DataProvider.Instance.ExecuteScalar("SELECT MAX (SOHD) FROM dbo.HOADON");
+            }
+
+            catch
+            {
+                return 1;
+            }
+        }
+
+        public int ktrahoadon()
+        {
+            DataTable data = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.HOADON WHERE TRANGTHAI = 0");
+
+            if (data.Rows.Count > 0)
+
+            {
+                hoadon hd = new hoadon(data.Rows[0]);
+                return hd.Sohd;
+            }
+            return -1;
+        }
+        public List<taohoadon> xuatdshoadon()
+        {
+            List<taohoadon> dshd = new List<taohoadon>();
+
+            string query = "SELECT SP.TENSP, C.SOLUONG, SP.GIA, SP.GIA * C.SOLUONG AS TONGTIEN FROM dbo.HOADON AS HD, dbo.CTHD AS C, dbo.SANPHAM AS SP WHERE C.SOHD = HD.SOHD AND C.MASP = SP.MASP AND HD.TRANGTHAI = 0";
+
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+
+            foreach (DataRow item in data.Rows)
+            {
+                taohoadon m = new taohoadon(item);
+                dshd.Add(m);
+            }
+
+            return dshd;
+        }
+        public void thanhtoan(int sohd, float tongtien)
+        {
+            string query = "UPDATE dbo.HOADON SET NGAYTHANHTOAN = GETDATE() , tongtien = " + tongtien + " , TRANGTHAI = 1 WHERE SOHD = " + sohd;
+            DataProvider.Instance.ExecuteNonQuery(query);
+        }
     }
 }

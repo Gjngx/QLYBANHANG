@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,19 +33,13 @@ namespace QLYBANHANG.UC
         public void sanphamBinding()
         {
             txbtimmasp.DataBindings.Add(new Binding("Text", dgvtimsanpham.DataSource, "Masanpham", true, DataSourceUpdateMode.Never));
+            txbtenloai.DataBindings.Add(new Binding("Text", dgvtimsanpham.DataSource, "Tenloai", true, DataSourceUpdateMode.Never));
             txbtensanpham.DataBindings.Add(new Binding("Text", dgvtimsanpham.DataSource, "Tensanpham", true, DataSourceUpdateMode.Never));
         }
 
         void taidssanpham()
         {
             dssanpham.DataSource = hoadonDAO.Instance.dssanpham();
-        }
-
-        public void taidsloaicbb( ComboBox cb)
-        {
-            cb.DataSource = hoadonDAO.Instance.xuatdsloai();
-            cb.DisplayMember = "TENLOAI";
-
         }
         List<sanphamhd> timsanpham(string masanpham)
         {
@@ -57,12 +52,67 @@ namespace QLYBANHANG.UC
             dgvtimsanpham.DataSource = dssanpham;
             taidssanpham();
             sanphamBinding();
-            taidsloaicbb(cbtenloai);
         }
 
         private void btntim_Click(object sender, EventArgs e)
         {
             dssanpham.DataSource = timsanpham(txbtimmasp.Text);
+        }
+        void showhoadon()
+        {
+            lsvhoadon.Items.Clear();
+            List<taohoadon> dscthd = hoadonDAO.Instance.xuatdshoadon();
+            float tongtien = 0;
+            foreach (taohoadon item in dscthd)
+            {
+                ListViewItem lsitem = new ListViewItem(item.Tensanpham);
+                lsitem.SubItems.Add(item.Soluong.ToString());
+                lsitem.SubItems.Add(item.Gia.ToString());
+                lsitem.SubItems.Add(item.Thanhtien.ToString());
+                tongtien += item.Thanhtien;
+                lsvhoadon.Items.Add(lsitem);
+            }
+            CultureInfo vn = new CultureInfo("vi-VN");
+            txbtongtien.Text = tongtien.ToString("c", vn);
+        }
+
+        private void btnthem_Click(object sender, EventArgs e)
+        {
+            int sohd = hoadonDAO.Instance.ktrahoadon();
+
+            string masp = txbtimmasp.Text;
+
+            int soluong = (int)nudsoluong.Value;
+
+            if (sohd == -1)
+            {
+                hoadonDAO.Instance.taohd();
+                hoadonDAO.Instance.themcthd(hoadonDAO.Instance.xuatmahoadon(), masp, soluong);
+            }
+
+            else
+            {
+                hoadonDAO.Instance.themcthd(sohd, masp, soluong);
+            }
+            showhoadon();
+
+        }
+
+        private void btnthanhtoan_Click(object sender, EventArgs e)
+        {
+            int sohd = hoadonDAO.Instance.xuatmahoadon();
+            double tongtien = Convert.ToDouble(txbtongtien.Text.Split(',')[0]);
+            double giamgia = Convert.ToDouble(nudgiamgia.Value);
+            tongtien = tongtien - giamgia;
+            if (sohd != -1)
+            {
+                if (MessageBox.Show("Bạn có chắc thanh toán hóa đơn tổng tiền: " + tongtien , "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+                {
+                    hoadonDAO.Instance.thanhtoan(sohd, (float)tongtien);
+                    showhoadon();
+                }
+
+            }
         }
     }
 }

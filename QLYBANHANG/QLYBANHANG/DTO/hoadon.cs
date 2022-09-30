@@ -23,7 +23,7 @@ namespace QLYBANHANG.DTO
             this.Sohd = (int)row["SOHD"];
             this.Ngaylap = (DateTime)row["NGAYLAP"];
             this.Ngaythanhtoan = (DateTime)row["NGAYTHANHTOAN"];
-            this.Tongtien = (int)row["TONGTIEN"];
+            //this.Tongtien = (int)row["TONGTIEN"];
             this.Trangthai = (int)row["TRANGTHAI"];
         }
 
