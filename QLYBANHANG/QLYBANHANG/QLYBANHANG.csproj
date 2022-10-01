@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO\cthdDAO.cs" />
     <Compile Include="DAO\DataProvider.cs" />
     <Compile Include="DAO\hoadonDAO.cs" />
     <Compile Include="DAO\taikhoanDAO.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="DTO\sanphamhd.cs" />
     <Compile Include="DTO\taikhoan.cs" />
     <Compile Include="DTO\taohoadon.cs" />
+    <Compile Include="DTO\xuatcthd.cs" />
     <Compile Include="frmcapnhatthongtin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +108,12 @@
     <Compile Include="UC\ucloaisp.Designer.cs">
       <DependentUpon>ucloaisp.cs</DependentUpon>
     </Compile>
+    <Compile Include="UC\ucqlyhoadon.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\ucqlyhoadon.Designer.cs">
+      <DependentUpon>ucqlyhoadon.cs</DependentUpon>
+    </Compile>
     <Compile Include="UC\ucquanlytk.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -148,6 +156,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UC\ucloaisp.resx">
       <DependentUpon>ucloaisp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\ucqlyhoadon.resx">
+      <DependentUpon>ucqlyhoadon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UC\ucquanlytk.resx">
       <DependentUpon>ucquanlytk.cs</DependentUpon>

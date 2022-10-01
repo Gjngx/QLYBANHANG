@@ -44,9 +44,20 @@ namespace QLYBANHANG
             uchoadon.Instance.BringToFront();
         }
 
+        public void load_uchoadon()
+        {
+            if (!fdfcontainer.Controls.Contains(uchoadon.Instance))
+            {
+                fdfcontainer.Controls.Add(uchoadon.Instance);
+                uchoadon.Instance.Dock = DockStyle.Fill;
+                uchoadon.Instance.BringToFront();
+            }
+            uchoadon.Instance.BringToFront();
+        }
+
         private void frmmain_Load(object sender, EventArgs e)
         {
-
+            load_uchoadon();
         }
         private void f_Capnhatttk(object sender, taikhoanevent e)
         {
@@ -121,6 +132,15 @@ namespace QLYBANHANG
 
         }
 
-
+        private void acecthd_Click(object sender, EventArgs e)
+        {
+            if (!fdfcontainer.Controls.Contains(ucqlyhoadon.Instance))
+            {
+                fdfcontainer.Controls.Add(ucqlyhoadon.Instance);
+                ucqlyhoadon.Instance.Dock = DockStyle.Fill;
+                ucqlyhoadon.Instance.BringToFront();
+            }
+            ucqlyhoadon.Instance.BringToFront();
+        }
     }
 }

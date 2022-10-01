@@ -95,6 +95,7 @@ namespace QLYBANHANG.UC
                 hoadonDAO.Instance.themcthd(sohd, masp, soluong);
             }
             showhoadon();
+            taidssanpham();
 
         }
 
