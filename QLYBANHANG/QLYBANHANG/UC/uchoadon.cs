@@ -115,5 +115,10 @@ namespace QLYBANHANG.UC
 
             }
         }
+
+        private void dgvtimsanpham_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
