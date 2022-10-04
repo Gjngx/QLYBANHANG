@@ -10,6 +10,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using OfficeOpenXml;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace QLYBANHANG.UC
 {
@@ -58,6 +61,52 @@ namespace QLYBANHANG.UC
         private void btntailai_Click(object sender, EventArgs e)
         {
             taidscthd();
+        }
+
+
+        private void btnimport_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Export (string p)
+        {
+            Excel.Application a = new Excel.Application();
+            a.Application.Workbooks.Add(Type.Missing);
+            for (int i = 0; i < dgvcthd.Columns.Count; i++)
+            {
+                a.Cells[1, i + 1] = dgvcthd.Columns[i].HeaderText;
+            }
+            for (int i = 0; i < dgvcthd.Rows.Count; i++)
+            {
+                for (int j = 0; j < dgvcthd.Rows[i].Cells.Count; j++)
+                {
+                    a.Cells[i + 2, j + 1] = dgvcthd.Rows[i].Cells[j].Value;
+
+                }
+            }
+            a.Columns.AutoFit();
+            a.ActiveWorkbook.SaveCopyAs(p);
+            a.ActiveWorkbook.Saved = true;
+        }
+        private void btnexport_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Title = "flie chi tiết hóa đơn";
+            saveFileDialog.Filter = "Excel (*.xlsx) | *.xlsx | Excel 2003 (*.xls) | *.xls";
+            if(saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    Export(saveFileDialog.FileName);
+                    MessageBox.Show("Xuất file thành công!", "Thông báo");
+
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("Xuất file không thành công!" + ex.Message);
+                }
+            }
         }
     }
 }
