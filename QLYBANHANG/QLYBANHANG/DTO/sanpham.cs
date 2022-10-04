@@ -9,10 +9,10 @@ namespace QLYBANHANG.DTO
 {
     public class sanpham
     {
-        public sanpham(string masanpham, string tensanpham, string maloai, float gia)
+        public sanpham(string masanpham, string tensanpham, string tenloai, float gia)
         {
             this.MaSanPham = masanpham;
-            this.MaLoai = maloai;
+            this.TenLoai = tenloai;
             this.TenSanPham = tensanpham;
             this.Gia = gia;
         }
@@ -20,7 +20,7 @@ namespace QLYBANHANG.DTO
         public sanpham(DataRow row)
         {
             this.MaSanPham = row["MASP"].ToString();
-            this.MaLoai = row["MAlOAISP"].ToString();
+            this.TenLoai = row["TENLOAISP"].ToString();
             this.TenSanPham = row["TENSP"].ToString();
             this.Gia = (float)Convert.ToDouble(row["GIA"].ToString());
         }
@@ -41,12 +41,12 @@ namespace QLYBANHANG.DTO
             set { tensanpham = value; }
         }
 
-        private string maloai;
+        private string tenloai;
 
-        public string MaLoai
+        public string TenLoai
         {
-            get { return maloai; }
-            set { maloai = value; }
+            get { return tenloai; }
+            set { tenloai = value; }
         }
 
         private float gia;

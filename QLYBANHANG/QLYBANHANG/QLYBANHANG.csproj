@@ -76,6 +76,7 @@
     <Compile Include="DAO\DataProvider.cs" />
     <Compile Include="DAO\hoadonDAO.cs" />
     <Compile Include="DAO\loaispDAO.cs" />
+    <Compile Include="DAO\sanphamDAO.cs" />
     <Compile Include="DAO\taikhoanDAO.cs" />
     <Compile Include="DTO\cthd.cs" />
     <Compile Include="DTO\hoadon.cs" />
