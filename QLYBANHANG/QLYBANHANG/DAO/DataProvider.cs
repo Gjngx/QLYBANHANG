@@ -16,10 +16,11 @@ namespace QLYBANHANG.DAO
             get { if (instance == null) instance = new DataProvider(); return DataProvider.instance; }
             private set { DataProvider.instance = value; }
         }
-
+        //Data Source=DESKTOP-GN6S3OC;Initial Catalog=QLYBANHANG;Integrated Security=True 
+        //Data Source=DESKTOP-KM3F23R\\SQLSERVERPHAT;Initial Catalog=QLYBANHANG;Integrated Security=True
         private DataProvider() { }
 
-        private String connectionSTR = "Data Source=DESKTOP-KM3F23R\\SQLSERVERPHAT;Initial Catalog=QLYBANHANG;Integrated Security=True";
+        private String connectionSTR = "Data Source=DESKTOP-GN6S3OC;Initial Catalog=QLYBANHANG;Integrated Security=True ";
 
         public DataTable ExecuteQuery(string query, object[] parameter = null)
         {

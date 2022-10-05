@@ -165,41 +165,20 @@ namespace QLYBANHANG.UC
         }
         private void btnluu_Click(object sender, EventArgs e)
         {
-            try
+            string masp = txbmasp.Text;
+            string tensp = txbtensp.Text;
+            string tenloai = (cbbloai.SelectedItem as loaisp).Maloai;
+            float gia = (float)nudgiasp.Value;
+            if (ktradulieu())
             {
-                string masp = txbmasp.Text;
-                string tensp = txbtensp.Text;
-                string tenloai = (cbbloai.SelectedItem as loaisp).Maloai;
-                float gia = (float)nudgiasp.Value;
-                if (ktradulieu())
+                if (txbmasp.Enabled == true)
                 {
-                    if (txbmasp.Enabled == true)
+                    if (sanphamDAO.Instance.timmasp(masp) == 0)
                     {
-                        if (sanphamDAO.Instance.timmasp(masp) == 0)
+                        if (sanphamDAO.Instance.themsanpham(masp, tensp, tenloai, gia))
                         {
-                            if (sanphamDAO.Instance.themsanpham(masp, tensp, tenloai, gia))
-                            {
-                                MessageBox.Show("Thêm sản phẩm thành công", "Thông báo", MessageBoxButtons.OK);
-                                taidssp();
-                                cbbloai.Enabled = false;
-                                txbmasp.Enabled = false;
-                                txbtensp.Enabled = false;
-                                nudgiasp.Enabled = false;
-                                txbtim.Enabled = true;
-                                btnxem.Enabled = true;
-                                btnthem.Enabled = true;
-                                btnsua.Enabled = true;
-                                btnxoa.Enabled = true;
-                                btnluu.Enabled = false;
-                                btnhuy.Enabled = false;
-                                btntim.Enabled = true;
-                                dgvsanpham.Enabled = true;
-                            }
-
-                        }
-                        else
-                        {
-                            MessageBox.Show("Thêm sản phẩm thất bại", "Thông báo", MessageBoxButtons.OK);
+                            MessageBox.Show("Thêm sản phẩm thành công", "Thông báo", MessageBoxButtons.OK);
+                            taidssp();
                             cbbloai.Enabled = false;
                             txbmasp.Enabled = false;
                             txbtensp.Enabled = false;
@@ -214,28 +193,11 @@ namespace QLYBANHANG.UC
                             btntim.Enabled = true;
                             dgvsanpham.Enabled = true;
                         }
+
                     }
-                    else if (txbmasp.Enabled == false)
+                    else
                     {
-                        if (sanphamDAO.Instance.suasanpham(masp, tensp, tenloai, gia))
-                        {
-                            MessageBox.Show("Sửa sản phẩm thành công", "Thông báo", MessageBoxButtons.OK);
-                            cbbloai.Enabled = false;
-                            txbmasp.Enabled = false;
-                            txbtensp.Enabled = false;
-                            nudgiasp.Enabled = false;
-                            txbtim.Enabled = true;
-                            btnxem.Enabled = true;
-                            btnthem.Enabled = true;
-                            btnsua.Enabled = true;
-                            btnxoa.Enabled = true;
-                            btnluu.Enabled = false;
-                            btnhuy.Enabled = false;
-                            btntim.Enabled = true;
-                            taidssp();
-                        }
-                        else
-                            MessageBox.Show("Sửa sản phẩm thất bại", "Thông báo", MessageBoxButtons.OK);
+                        MessageBox.Show("Thêm sản phẩm thất bại", "Thông báo", MessageBoxButtons.OK);
                         cbbloai.Enabled = false;
                         txbmasp.Enabled = false;
                         txbtensp.Enabled = false;
@@ -248,11 +210,44 @@ namespace QLYBANHANG.UC
                         btnluu.Enabled = false;
                         btnhuy.Enabled = false;
                         btntim.Enabled = true;
+                        dgvsanpham.Enabled = true;
                     }
                 }
-            }
-            catch (Exception ex) { MessageBox.(ex); }
-            
+                else if (txbmasp.Enabled == false)
+                {
+                    if (sanphamDAO.Instance.suasanpham(masp, tensp, tenloai, gia))
+                    {
+                        MessageBox.Show("Sửa sản phẩm thành công", "Thông báo", MessageBoxButtons.OK);
+                        cbbloai.Enabled = false;
+                        txbmasp.Enabled = false;
+                        txbtensp.Enabled = false;
+                        nudgiasp.Enabled = false;
+                        txbtim.Enabled = true;
+                        btnxem.Enabled = true;
+                        btnthem.Enabled = true;
+                        btnsua.Enabled = true;
+                        btnxoa.Enabled = true;
+                        btnluu.Enabled = false;
+                        btnhuy.Enabled = false;
+                        btntim.Enabled = true;
+                        taidssp();
+                    }
+                    else
+                        MessageBox.Show("Sửa sản phẩm thất bại", "Thông báo", MessageBoxButtons.OK);
+                    cbbloai.Enabled = false;
+                    txbmasp.Enabled = false;
+                    txbtensp.Enabled = false;
+                    nudgiasp.Enabled = false;
+                    txbtim.Enabled = true;
+                    btnxem.Enabled = true;
+                    btnthem.Enabled = true;
+                    btnsua.Enabled = true;
+                    btnxoa.Enabled = true;
+                    btnluu.Enabled = false;
+                    btnhuy.Enabled = false;
+                    btntim.Enabled = true;
+                }
+            }          
         }
     }
 }
