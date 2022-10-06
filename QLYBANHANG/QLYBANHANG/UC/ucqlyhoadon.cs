@@ -63,10 +63,48 @@ namespace QLYBANHANG.UC
             taidscthd();
         }
 
+        public void import (string path)
+        {
+            using (ExcelPackage ep = new ExcelPackage(new FileInfo(path)))
+            {
+                ExcelWorksheet ews = ep.Workbook.Worksheets[0];
+                DataTable dataTable = new DataTable();
+                for(int i = ews.Dimension.Start.Column; i <= ews.Dimension.End.Column; i++)
+                {
+                    dataTable.Columns.Add(ews.Cells[1, i].Value.ToString());
+                }
+                for( int i = ews.Dimension.Start.Row+1; i <= ews.Dimension.End.Row; i++)
+                {
+                    List<String> listRows = new List<string>();
+                    for (int j = ews.Dimension.Start.Column; j <= ews.Dimension.End.Column; j++)
+                    {
+                        listRows.Add(ews.Cells[i, j].Value.ToString());
+                    }
+                    dataTable.Rows.Add(listRows.ToArray());
+                }
+                dgvcthd.DataSource = dataTable;
+            }
+
+        }
 
         private void btnimport_Click(object sender, EventArgs e)
         {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "flie chi tiết hóa đơn";
+            openFileDialog.Filter = "Excel (*.xlsx) | *.xlsx | Excel 2003 (*.xls) | *.xls";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    import(openFileDialog.FileName);
+                    MessageBox.Show("Nhập file thành công!", "Thông báo");
 
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Nhập file không thành công!" + ex.Message);
+                }
+            }
         }
 
         private void Export (string p)

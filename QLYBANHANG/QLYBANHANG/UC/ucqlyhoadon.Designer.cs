@@ -58,7 +58,7 @@
             // btntim
             // 
             this.btntim.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btntim.Location = new System.Drawing.Point(299, 14);
+            this.btntim.Location = new System.Drawing.Point(299, 11);
             this.btntim.Name = "btntim";
             this.btntim.Size = new System.Drawing.Size(120, 36);
             this.btntim.TabIndex = 1;
@@ -142,7 +142,7 @@
             // btntailai
             // 
             this.btntailai.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btntailai.Location = new System.Drawing.Point(425, 15);
+            this.btntailai.Location = new System.Drawing.Point(425, 11);
             this.btntailai.Name = "btntailai";
             this.btntailai.Size = new System.Drawing.Size(120, 36);
             this.btntailai.TabIndex = 4;
@@ -153,7 +153,7 @@
             // btnexport
             // 
             this.btnexport.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnexport.Location = new System.Drawing.Point(969, 24);
+            this.btnexport.Location = new System.Drawing.Point(960, 24);
             this.btnexport.Name = "btnexport";
             this.btnexport.Size = new System.Drawing.Size(138, 36);
             this.btnexport.TabIndex = 5;
