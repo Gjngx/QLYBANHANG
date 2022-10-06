@@ -130,13 +130,16 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.btnexport);
+            this.panel1.Controls.Add(this.btnimport);
             this.panel1.Controls.Add(this.btntailai);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.txbtimsohd);
             this.panel1.Controls.Add(this.btntim);
             this.panel1.Location = new System.Drawing.Point(3, 13);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(560, 66);
+            this.panel1.Size = new System.Drawing.Size(1091, 66);
             this.panel1.TabIndex = 4;
             // 
             // btntailai
@@ -153,7 +156,7 @@
             // btnexport
             // 
             this.btnexport.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnexport.Location = new System.Drawing.Point(960, 24);
+            this.btnexport.Location = new System.Drawing.Point(927, 10);
             this.btnexport.Name = "btnexport";
             this.btnexport.Size = new System.Drawing.Size(138, 36);
             this.btnexport.TabIndex = 5;
@@ -164,7 +167,7 @@
             // btnimport
             // 
             this.btnimport.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnimport.Location = new System.Drawing.Point(809, 24);
+            this.btnimport.Location = new System.Drawing.Point(783, 11);
             this.btnimport.Name = "btnimport";
             this.btnimport.Size = new System.Drawing.Size(138, 36);
             this.btnimport.TabIndex = 6;
@@ -176,7 +179,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(579, 28);
+            this.label2.Location = new System.Drawing.Point(553, 14);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(224, 29);
             this.label2.TabIndex = 7;
@@ -186,9 +189,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.btnimport);
-            this.Controls.Add(this.btnexport);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dgvcthd);
             this.Name = "ucqlyhoadon";
@@ -197,7 +197,6 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -210,7 +209,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnexport;
         private System.Windows.Forms.Button btnimport;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridViewTextBoxColumn sohd;
         private System.Windows.Forms.DataGridViewTextBoxColumn masp;
         private System.Windows.Forms.DataGridViewTextBoxColumn tensp;
@@ -218,5 +216,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn gia;
         private System.Windows.Forms.DataGridViewTextBoxColumn thanhtien;
         private System.Windows.Forms.Button btntailai;
+        private System.Windows.Forms.Label label2;
     }
 }

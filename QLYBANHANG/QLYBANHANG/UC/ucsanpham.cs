@@ -11,6 +11,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ComboBox = System.Windows.Forms.ComboBox;
+using System.IO;
+using OfficeOpenXml;
+using Excel = Microsoft.Office.Interop.Excel;
+
 
 namespace QLYBANHANG.UC
 {
@@ -87,6 +91,8 @@ namespace QLYBANHANG.UC
             btnluu.Enabled = true;
             btnhuy.Enabled = true;
             dgvsanpham.Enabled = false;
+            btnexport.Enabled = false;
+            btnimport.Enabled = false;
 
         }
 
@@ -123,6 +129,8 @@ namespace QLYBANHANG.UC
             btnhuy.Enabled = false;
             btnluu.Enabled = false;
             dgvsanpham.Enabled = true;
+            btnexport.Enabled = true;
+            btnimport.Enabled = true;
             taidssp();
         }
         List<sanpham> timsanpham(string tensanpham)
@@ -151,6 +159,8 @@ namespace QLYBANHANG.UC
             btnxoa.Enabled = false;
             btnluu.Enabled = true;
             btnhuy.Enabled = true;
+            btnexport.Enabled = false;
+            btnimport.Enabled = false;
             taidssp();
         }
 
@@ -192,6 +202,8 @@ namespace QLYBANHANG.UC
                             btnhuy.Enabled = false;
                             btntim.Enabled = true;
                             dgvsanpham.Enabled = true;
+                            btnexport.Enabled = true;
+                            btnimport.Enabled = true;
                         }
 
                     }
@@ -211,6 +223,8 @@ namespace QLYBANHANG.UC
                         btnhuy.Enabled = false;
                         btntim.Enabled = true;
                         dgvsanpham.Enabled = true;
+                        btnexport.Enabled = true;
+                        btnimport.Enabled = true;
                     }
                 }
                 else if (txbmasp.Enabled == false)
@@ -230,6 +244,8 @@ namespace QLYBANHANG.UC
                         btnluu.Enabled = false;
                         btnhuy.Enabled = false;
                         btntim.Enabled = true;
+                        btnexport.Enabled = true;
+                        btnimport.Enabled = true;
                         taidssp();
                     }
                     else
@@ -246,8 +262,95 @@ namespace QLYBANHANG.UC
                     btnluu.Enabled = false;
                     btnhuy.Enabled = false;
                     btntim.Enabled = true;
+                    btnexport.Enabled = true;
+                    btnimport.Enabled = true;
                 }
             }          
+        }
+
+        public void import(string path)
+        {
+            using (ExcelPackage ep = new ExcelPackage(new FileInfo(path)))
+            {
+                ExcelWorksheet ews = ep.Workbook.Worksheets[0];
+                DataTable dataTable = new DataTable();
+                for (int i = ews.Dimension.Start.Column; i <= ews.Dimension.End.Column; i++)
+                {
+                    dataTable.Columns.Add(ews.Cells[1, i].Value.ToString());
+                }
+                for (int i = ews.Dimension.Start.Row + 1; i <= ews.Dimension.End.Row; i++)
+                {
+                    List<String> listRows = new List<string>();
+                    for (int j = ews.Dimension.Start.Column; j <= ews.Dimension.End.Column; j++)
+                    {
+                        listRows.Add(ews.Cells[i, j].Value.ToString());
+                    }
+                    dataTable.Rows.Add(listRows.ToArray());
+                }
+                dgvsanpham.DataSource = dataTable;
+            }
+
+        }
+
+        private void btnimport_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "flie chi tiết hóa đơn";
+            openFileDialog.Filter = "Excel (*.xlsx) | *.xlsx | Excel 2003 (*.xls) | *.xls";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    import(openFileDialog.FileName);
+                    MessageBox.Show("Nhập file thành công!", "Thông báo");
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Nhập file không thành công!" + ex.Message);
+                }
+            }
+        }
+
+        private void Export(string p)
+        {
+            Excel.Application a = new Excel.Application();
+            a.Application.Workbooks.Add(Type.Missing);
+            for (int i = 0; i < dgvsanpham.Columns.Count; i++)
+            {
+                a.Cells[1, i + 1] = dgvsanpham.Columns[i].HeaderText;
+            }
+            for (int i = 0; i < dgvsanpham.Rows.Count; i++)
+            {
+                for (int j = 0; j < dgvsanpham.Rows[i].Cells.Count; j++)
+                {
+                    a.Cells[i + 2, j + 1] = dgvsanpham.Rows[i].Cells[j].Value;
+
+                }
+            }
+            a.Columns.AutoFit();
+            a.ActiveWorkbook.SaveCopyAs(p);
+            a.ActiveWorkbook.Saved = true;
+        }
+
+        private void btnexport_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Title = "flie chi tiết hóa đơn";
+            saveFileDialog.Filter = "Excel (*.xlsx) | *.xlsx | Excel 2003 (*.xls) | *.xls";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    Export(saveFileDialog.FileName);
+                    MessageBox.Show("Xuất file thành công!", "Thông báo");
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Xuất file không thành công!" + ex.Message);
+                }
+            }
         }
     }
 }
