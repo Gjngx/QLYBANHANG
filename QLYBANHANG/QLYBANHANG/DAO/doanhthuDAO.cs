@@ -8,7 +8,5 @@ namespace QLYBANHANG.DAO
 {
     internal class doanhthuDAO
     {
-
-        int i = 1;
     }
 }
