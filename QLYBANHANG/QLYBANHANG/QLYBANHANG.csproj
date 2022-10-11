@@ -258,5 +258,8 @@
   <ItemGroup>
     <None Include="Resources\dangnhap1.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-shopping-cart-100.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -39,6 +39,7 @@
             this.acedoanhthu = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.aceloaisp = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acesanpham = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.acecthd = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acequanlytaikhoan = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acedangxuat = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
@@ -53,7 +54,6 @@
             this.btncapnhatthongtin = new DevExpress.XtraBars.BarButtonItem();
             this.btndoimatkhau = new DevExpress.XtraBars.BarButtonItem();
             this.fluentFormDefaultManager1 = new DevExpress.XtraBars.FluentDesignSystem.FluentFormDefaultManager(this.components);
-            this.acecthd = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentFormDefaultManager1)).BeginInit();
@@ -63,7 +63,7 @@
             // 
             this.fdfcontainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fdfcontainer.Location = new System.Drawing.Point(217, 31);
-            this.fdfcontainer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.fdfcontainer.Margin = new System.Windows.Forms.Padding(2);
             this.fdfcontainer.Name = "fdfcontainer";
             this.fdfcontainer.Size = new System.Drawing.Size(1112, 739);
             this.fdfcontainer.TabIndex = 0;
@@ -76,7 +76,7 @@
             this.acequanly,
             this.acedangxuat});
             this.accordionControl1.Location = new System.Drawing.Point(0, 31);
-            this.accordionControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.accordionControl1.Margin = new System.Windows.Forms.Padding(2);
             this.accordionControl1.Name = "accordionControl1";
             this.accordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
             this.accordionControl1.Size = new System.Drawing.Size(217, 739);
@@ -132,6 +132,13 @@
             this.acesanpham.Text = "Sản phẩm";
             this.acesanpham.Click += new System.EventHandler(this.acesanpham_Click);
             // 
+            // acecthd
+            // 
+            this.acecthd.Name = "acecthd";
+            this.acecthd.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.acecthd.Text = "Chi tiết hoá đơn";
+            this.acecthd.Click += new System.EventHandler(this.acecthd_Click);
+            // 
             // acequanlytaikhoan
             // 
             this.acequanlytaikhoan.Name = "acequanlytaikhoan";
@@ -164,7 +171,7 @@
             this.btndoimatkhau});
             this.fluentDesignFormControl1.Location = new System.Drawing.Point(0, 0);
             this.fluentDesignFormControl1.Manager = this.fluentFormDefaultManager1;
-            this.fluentDesignFormControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.fluentDesignFormControl1.Margin = new System.Windows.Forms.Padding(2);
             this.fluentDesignFormControl1.Name = "fluentDesignFormControl1";
             this.fluentDesignFormControl1.Size = new System.Drawing.Size(1329, 31);
             this.fluentDesignFormControl1.TabIndex = 2;
@@ -257,13 +264,6 @@
             this.btndoimatkhau});
             this.fluentFormDefaultManager1.MaxItemId = 10;
             // 
-            // acecthd
-            // 
-            this.acecthd.Name = "acecthd";
-            this.acecthd.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.acecthd.Text = "Chi tiết hoá đơn";
-            this.acecthd.Click += new System.EventHandler(this.acecthd_Click);
-            // 
             // frmmain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -274,7 +274,8 @@
             this.Controls.Add(this.accordionControl1);
             this.Controls.Add(this.fluentDesignFormControl1);
             this.FluentDesignFormControl = this.fluentDesignFormControl1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.IconOptions.Image = global::QLYBANHANG.Properties.Resources.icons8_shopping_cart_100;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmmain";
             this.NavigationControl = this.accordionControl1;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

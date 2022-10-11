@@ -48,10 +48,10 @@
             // btndangnhap
             // 
             this.btndangnhap.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btndangnhap.Location = new System.Drawing.Point(786, 529);
+            this.btndangnhap.Location = new System.Drawing.Point(674, 430);
             this.btndangnhap.Margin = new System.Windows.Forms.Padding(2);
             this.btndangnhap.Name = "btndangnhap";
-            this.btndangnhap.Size = new System.Drawing.Size(136, 43);
+            this.btndangnhap.Size = new System.Drawing.Size(117, 35);
             this.btndangnhap.TabIndex = 7;
             this.btndangnhap.Text = "Đăng nhập";
             this.btndangnhap.UseVisualStyleBackColor = true;
@@ -61,10 +61,10 @@
             // 
             this.btnthoat.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnthoat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnthoat.Location = new System.Drawing.Point(1065, 529);
+            this.btnthoat.Location = new System.Drawing.Point(913, 430);
             this.btnthoat.Margin = new System.Windows.Forms.Padding(2);
             this.btnthoat.Name = "btnthoat";
-            this.btnthoat.Size = new System.Drawing.Size(138, 43);
+            this.btnthoat.Size = new System.Drawing.Size(118, 35);
             this.btnthoat.TabIndex = 8;
             this.btnthoat.Text = "Thoát";
             this.btnthoat.UseVisualStyleBackColor = true;
@@ -74,20 +74,20 @@
             // 
             this.panel2.Controls.Add(this.txbmatkhau);
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Location = new System.Drawing.Point(765, 440);
+            this.panel2.Location = new System.Drawing.Point(656, 358);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(453, 70);
+            this.panel2.Size = new System.Drawing.Size(388, 57);
             this.panel2.TabIndex = 6;
             // 
             // txbmatkhau
             // 
             this.txbmatkhau.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbmatkhau.Location = new System.Drawing.Point(120, 17);
+            this.txbmatkhau.Location = new System.Drawing.Point(103, 14);
             this.txbmatkhau.Margin = new System.Windows.Forms.Padding(2);
             this.txbmatkhau.Name = "txbmatkhau";
             this.txbmatkhau.PasswordChar = '*';
-            this.txbmatkhau.Size = new System.Drawing.Size(318, 30);
+            this.txbmatkhau.Size = new System.Drawing.Size(273, 26);
             this.txbmatkhau.TabIndex = 2;
             this.txbmatkhau.Text = "admin";
             // 
@@ -95,10 +95,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(18, 20);
+            this.label2.Location = new System.Drawing.Point(15, 16);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(99, 25);
+            this.label2.Size = new System.Drawing.Size(79, 20);
             this.label2.TabIndex = 0;
             this.label2.Text = "Mật khẩu:";
             // 
@@ -106,19 +106,19 @@
             // 
             this.panel1.Controls.Add(this.txbtaikhoan);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(765, 360);
+            this.panel1.Location = new System.Drawing.Point(656, 292);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(453, 69);
+            this.panel1.Size = new System.Drawing.Size(388, 56);
             this.panel1.TabIndex = 5;
             // 
             // txbtaikhoan
             // 
             this.txbtaikhoan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbtaikhoan.Location = new System.Drawing.Point(120, 23);
+            this.txbtaikhoan.Location = new System.Drawing.Point(103, 19);
             this.txbtaikhoan.Margin = new System.Windows.Forms.Padding(2);
             this.txbtaikhoan.Name = "txbtaikhoan";
-            this.txbtaikhoan.Size = new System.Drawing.Size(318, 30);
+            this.txbtaikhoan.Size = new System.Drawing.Size(273, 26);
             this.txbtaikhoan.TabIndex = 1;
             this.txbtaikhoan.Tag = "";
             this.txbtaikhoan.Text = "admin";
@@ -127,20 +127,19 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(16, 23);
+            this.label1.Location = new System.Drawing.Point(14, 19);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(105, 25);
+            this.label1.Size = new System.Drawing.Size(82, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Tài khoản:";
             // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::QLYBANHANG.Properties.Resources.dangnhap1;
-            this.pictureBox2.Location = new System.Drawing.Point(-17, 13);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox2.Location = new System.Drawing.Point(-15, 11);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(757, 575);
+            this.pictureBox2.Size = new System.Drawing.Size(649, 467);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 10;
             this.pictureBox2.TabStop = false;
@@ -148,10 +147,9 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::QLYBANHANG.Properties.Resources.password;
-            this.pictureBox1.Location = new System.Drawing.Point(896, 13);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Location = new System.Drawing.Point(768, 11);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(221, 218);
+            this.pictureBox1.Size = new System.Drawing.Size(189, 177);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 9;
             this.pictureBox1.TabStop = false;
@@ -161,19 +159,19 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Tahoma", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Blue;
-            this.label3.Location = new System.Drawing.Point(825, 259);
+            this.label3.Location = new System.Drawing.Point(707, 210);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(356, 72);
+            this.label3.Size = new System.Drawing.Size(287, 58);
             this.label3.TabIndex = 11;
             this.label3.Text = "Đăng nhập";
             // 
             // frmdangnhap
             // 
             this.AcceptButton = this.btndangnhap;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnthoat;
-            this.ClientSize = new System.Drawing.Size(1255, 583);
+            this.ClientSize = new System.Drawing.Size(1076, 474);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
@@ -181,6 +179,7 @@
             this.Controls.Add(this.btnthoat);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.IconOptions.Image = global::QLYBANHANG.Properties.Resources.icons8_shopping_cart_100;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmdangnhap";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -39,10 +39,9 @@
             this.thanhtien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btntailai = new System.Windows.Forms.Button();
-            this.btnexport = new System.Windows.Forms.Button();
-            this.btnimport = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnexport = new System.Windows.Forms.Button();
+            this.btntailai = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvcthd)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -79,6 +78,7 @@
             this.thanhtien});
             this.dgvcthd.Location = new System.Drawing.Point(0, 85);
             this.dgvcthd.Name = "dgvcthd";
+            this.dgvcthd.RowHeadersWidth = 82;
             this.dgvcthd.Size = new System.Drawing.Size(1107, 649);
             this.dgvcthd.TabIndex = 2;
             // 
@@ -86,36 +86,42 @@
             // 
             this.sohd.DataPropertyName = "sohd";
             this.sohd.HeaderText = "Số hóa đơn";
+            this.sohd.MinimumWidth = 10;
             this.sohd.Name = "sohd";
             // 
             // masp
             // 
             this.masp.DataPropertyName = "masanpham";
             this.masp.HeaderText = "Mã sản phẩm";
+            this.masp.MinimumWidth = 10;
             this.masp.Name = "masp";
             // 
             // tensp
             // 
             this.tensp.DataPropertyName = "tensanpham";
             this.tensp.HeaderText = "Tên sản phẩm";
+            this.tensp.MinimumWidth = 10;
             this.tensp.Name = "tensp";
             // 
             // soluong
             // 
             this.soluong.DataPropertyName = "soluong";
             this.soluong.HeaderText = "Số lượng";
+            this.soluong.MinimumWidth = 10;
             this.soluong.Name = "soluong";
             // 
             // gia
             // 
             this.gia.DataPropertyName = "gia";
             this.gia.HeaderText = "Giá";
+            this.gia.MinimumWidth = 10;
             this.gia.Name = "gia";
             // 
             // thanhtien
             // 
             this.thanhtien.DataPropertyName = "thanhtien";
             this.thanhtien.HeaderText = "Thành tiền";
+            this.thanhtien.MinimumWidth = 10;
             this.thanhtien.Name = "thanhtien";
             // 
             // label1
@@ -132,7 +138,6 @@
             // 
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.btnexport);
-            this.panel1.Controls.Add(this.btnimport);
             this.panel1.Controls.Add(this.btntailai);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.txbtimsohd);
@@ -141,6 +146,27 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1091, 66);
             this.panel1.TabIndex = 4;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(553, 14);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(151, 29);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Export excel:";
+            // 
+            // btnexport
+            // 
+            this.btnexport.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnexport.Location = new System.Drawing.Point(710, 11);
+            this.btnexport.Name = "btnexport";
+            this.btnexport.Size = new System.Drawing.Size(138, 36);
+            this.btnexport.TabIndex = 5;
+            this.btnexport.Text = "Export";
+            this.btnexport.UseVisualStyleBackColor = true;
+            this.btnexport.Click += new System.EventHandler(this.btnexport_Click);
             // 
             // btntailai
             // 
@@ -152,38 +178,6 @@
             this.btntailai.Text = "Tải ds";
             this.btntailai.UseVisualStyleBackColor = true;
             this.btntailai.Click += new System.EventHandler(this.btntailai_Click);
-            // 
-            // btnexport
-            // 
-            this.btnexport.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnexport.Location = new System.Drawing.Point(927, 10);
-            this.btnexport.Name = "btnexport";
-            this.btnexport.Size = new System.Drawing.Size(138, 36);
-            this.btnexport.TabIndex = 5;
-            this.btnexport.Text = "Export";
-            this.btnexport.UseVisualStyleBackColor = true;
-            this.btnexport.Click += new System.EventHandler(this.btnexport_Click);
-            // 
-            // btnimport
-            // 
-            this.btnimport.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnimport.Location = new System.Drawing.Point(783, 11);
-            this.btnimport.Name = "btnimport";
-            this.btnimport.Size = new System.Drawing.Size(138, 36);
-            this.btnimport.TabIndex = 6;
-            this.btnimport.Text = "Import";
-            this.btnimport.UseVisualStyleBackColor = true;
-            this.btnimport.Click += new System.EventHandler(this.btnimport_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(553, 14);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(224, 29);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Import/Export excel";
             // 
             // ucqlyhoadon
             // 
@@ -208,7 +202,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnexport;
-        private System.Windows.Forms.Button btnimport;
         private System.Windows.Forms.DataGridViewTextBoxColumn sohd;
         private System.Windows.Forms.DataGridViewTextBoxColumn masp;
         private System.Windows.Forms.DataGridViewTextBoxColumn tensp;
