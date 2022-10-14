@@ -110,6 +110,7 @@ namespace QLYBANHANG
             ucsanpham.Instance.BringToFront();
         }
 
+
         private void acequanlytaikhoan_Click(object sender, EventArgs e)
         {
             if (!fdfcontainer.Controls.Contains(ucquanlytk.Instance))

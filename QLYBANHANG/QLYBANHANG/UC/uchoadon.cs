@@ -105,9 +105,10 @@ namespace QLYBANHANG.UC
             double tongtien = Convert.ToDouble(txbtongtien.Text.Split(',')[0]);
             double giamgia = Convert.ToDouble(nudgiamgia.Value);
             tongtien = tongtien - giamgia;
+            CultureInfo vn = new CultureInfo("vi-VN");
             if (sohd != -1)
             {
-                if (MessageBox.Show("Bạn có chắc thanh toán hóa đơn tổng tiền: " + tongtien , "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+                if (MessageBox.Show("Bạn có chắc thanh toán hóa đơn tổng tiền: " + tongtien.ToString("c",vn) , "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
                 {
                     hoadonDAO.Instance.thanhtoan(sohd, (float)tongtien);
                     showhoadon();
@@ -115,9 +116,6 @@ namespace QLYBANHANG.UC
             }
         }
 
-        private void dgvtimsanpham_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+        
     }
 }

@@ -62,10 +62,9 @@
             // fdfcontainer
             // 
             this.fdfcontainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fdfcontainer.Location = new System.Drawing.Point(217, 31);
-            this.fdfcontainer.Margin = new System.Windows.Forms.Padding(2);
+            this.fdfcontainer.Location = new System.Drawing.Point(326, 46);
             this.fdfcontainer.Name = "fdfcontainer";
-            this.fdfcontainer.Size = new System.Drawing.Size(1112, 739);
+            this.fdfcontainer.Size = new System.Drawing.Size(1668, 1079);
             this.fdfcontainer.TabIndex = 0;
             // 
             // accordionControl1
@@ -75,11 +74,10 @@
             this.acenhanvien,
             this.acequanly,
             this.acedangxuat});
-            this.accordionControl1.Location = new System.Drawing.Point(0, 31);
-            this.accordionControl1.Margin = new System.Windows.Forms.Padding(2);
+            this.accordionControl1.Location = new System.Drawing.Point(0, 46);
             this.accordionControl1.Name = "accordionControl1";
             this.accordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
-            this.accordionControl1.Size = new System.Drawing.Size(217, 739);
+            this.accordionControl1.Size = new System.Drawing.Size(326, 1079);
             this.accordionControl1.TabIndex = 1;
             this.accordionControl1.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             // 
@@ -107,7 +105,6 @@
             this.acesanpham,
             this.acecthd,
             this.acequanlytaikhoan});
-            this.acequanly.Expanded = true;
             this.acequanly.Name = "acequanly";
             this.acequanly.Text = "Quản lý";
             // 
@@ -171,9 +168,8 @@
             this.btndoimatkhau});
             this.fluentDesignFormControl1.Location = new System.Drawing.Point(0, 0);
             this.fluentDesignFormControl1.Manager = this.fluentFormDefaultManager1;
-            this.fluentDesignFormControl1.Margin = new System.Windows.Forms.Padding(2);
             this.fluentDesignFormControl1.Name = "fluentDesignFormControl1";
-            this.fluentDesignFormControl1.Size = new System.Drawing.Size(1329, 31);
+            this.fluentDesignFormControl1.Size = new System.Drawing.Size(1994, 46);
             this.fluentDesignFormControl1.TabIndex = 2;
             this.fluentDesignFormControl1.TabStop = false;
             this.fluentDesignFormControl1.TitleItemLinks.Add(this.bsitaikhoan, true);
@@ -266,16 +262,15 @@
             // 
             // frmmain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1329, 770);
+            this.ClientSize = new System.Drawing.Size(1994, 1125);
             this.ControlContainer = this.fdfcontainer;
             this.Controls.Add(this.fdfcontainer);
             this.Controls.Add(this.accordionControl1);
             this.Controls.Add(this.fluentDesignFormControl1);
             this.FluentDesignFormControl = this.fluentDesignFormControl1;
             this.IconOptions.Image = global::QLYBANHANG.Properties.Resources.icons8_shopping_cart_100;
-            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmmain";
             this.NavigationControl = this.accordionControl1;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

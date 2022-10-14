@@ -21,7 +21,7 @@ namespace QLYBANHANG.DAO
         //Data Source=DESKTOP-GCSEIJD;Initial Catalog=QLYBANHANG;Integrated Security=True --PHUONG
         private DataProvider() { }
 
-        private String connectionSTR = "Data Source=DESKTOP-GCSEIJD;Initial Catalog=QLYBANHANG;Integrated Security=True";
+        private String connectionSTR = "Data Source=DESKTOP-GN6S3OC;Initial Catalog=QLYBANHANG;Integrated Security=True";
 
         public DataTable ExecuteQuery(string query, object[] parameter = null)
         {
