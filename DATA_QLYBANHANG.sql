@@ -76,7 +76,7 @@ VALUES
 	)
 	VALUES
 	(   'GD001',  -- MALOAISP - varchar(10)
-	    'Gia dụng'  -- TENLOAISP - nvarchar(50)
+	    N'Gia dụng'  -- TENLOAISP - nvarchar(50)
 	    )
 	INSERT dbo.LOAISP
 	(
@@ -85,7 +85,7 @@ VALUES
 	)
 	VALUES
 	(   'GV001',  -- MALOAISP - varchar(10)
-	    'Gia vị' -- TENLOAISP - nvarchar(50)
+	    N'Gia vị' -- TENLOAISP - nvarchar(50)
 	    )
 	INSERT dbo.LOAISP
 	(
@@ -94,7 +94,7 @@ VALUES
 	)
 	VALUES
 	(   'DC001',  -- MALOAISP - varchar(10)
-	    'Dụng cụ' -- TENLOAISP - nvarchar(50)
+	    N'Dụng cụ' -- TENLOAISP - nvarchar(50)
 	    )
 
 	INSERT dbo.SANPHAM
@@ -106,7 +106,7 @@ VALUES
 	)
 	VALUES
 	(   'CH001',     -- MASP - varchar(10)
-	    'Chuổi',   -- TENSP - nvarchar(50)
+	    N'Chổi',   -- TENSP - nvarchar(50)
 		'DC001',   -- MAlOAISP - varchar(10)
 	    30000 -- GIA - float
 	    )
@@ -119,7 +119,7 @@ VALUES
 	)
 	VALUES
 	(   'HR001',     -- MASP - varchar(10)
-	    'Hốt rác',   -- TENSP - nvarchar(50)
+	    N'Hốt rác',   -- TENSP - nvarchar(50)
 	    'DC001',   -- MAlOAISP - varchar(10)
 	    20000 -- GIA - float
 	)
@@ -132,7 +132,7 @@ VALUES
 	)
 	VALUES
 	(   'MU001',     -- MASP - varchar(10)
-	    'Muối',   -- TENSP - nvarchar(50)
+	    N'Muối',   -- TENSP - nvarchar(50)
 	    'GV001',   -- MAlOAISP - varchar(10)
 	    5000 -- GIA - float
 	    )
@@ -145,7 +145,7 @@ VALUES
 	)
 	VALUES
 	(   'DG001',     -- MASP - varchar(10)
-	    'Đường',   -- TENSP - nvarchar(50)
+	    N'Đường',   -- TENSP - nvarchar(50)
 	    'GV001',   -- MAlOAISP - varchar(10)
 	    20000 -- GIA - float
 	    )
@@ -158,7 +158,7 @@ VALUES
 	)
 	VALUES
 	(   'BN001',     -- MASP - varchar(10)
-	    'Bột ngọt',   -- TENSP - nvarchar(50)
+	    N'Bột ngọt',   -- TENSP - nvarchar(50)
 	    'GV001',   -- MAlOAISP - varchar(10)
 	    35000 -- GIA - float
 	    )
@@ -171,7 +171,7 @@ VALUES
 	)
 	VALUES
 	(   'NN001',     -- MASP - varchar(10)
-	    'Nồi nhôm',   -- TENSP - nvarchar(50)
+	    N'Nồi nhôm',   -- TENSP - nvarchar(50)
 	    'GD001',   -- MAlOAISP - varchar(10)
 	    50000 -- GIA - float
 	    )
@@ -344,3 +344,8 @@ GO
 	DELETE FROM dbo.HOADON WHERE SOHD = @SOHOADON
 	END
 	GO
+	SELECT TAIKHOAN , HOTEN , CASE WHEN PHANQUYEN = 1 THEN N'Quản lý' ELSE 'Nhân viên' END AS PHANQUYEN FROM dbo.TAIKHOAN
+
+	SELECT TAIKHOAN , HOTEN , CASE WHEN PHANQUYEN = 1 THEN N'Quản lý' ELSE 'Nhân viên' END AS PHANQUYEN FROM dbo.TAIKHOAN WHERE HOTEN LIKE N'%{0}%'
+
+	SELECT * FROM dbo.TAIKHOAN WHERE HOTEN LIKE N'%giang%'

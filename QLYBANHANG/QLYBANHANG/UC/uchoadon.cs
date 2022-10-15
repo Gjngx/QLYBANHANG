@@ -29,14 +29,19 @@ namespace QLYBANHANG.UC
                 return instance;
             }
         }
-
+        public uchoadon()
+        {
+            InitializeComponent();
+            dgvtimsanpham.DataSource = dssanpham;
+            taidssanpham();
+            sanphamBinding();
+        }
         public void sanphamBinding()
         {
             txbtimmasp.DataBindings.Add(new Binding("Text", dgvtimsanpham.DataSource, "Masanpham", true, DataSourceUpdateMode.Never));
             txbtenloai.DataBindings.Add(new Binding("Text", dgvtimsanpham.DataSource, "Tenloai", true, DataSourceUpdateMode.Never));
             txbtensanpham.DataBindings.Add(new Binding("Text", dgvtimsanpham.DataSource, "Tensanpham", true, DataSourceUpdateMode.Never));
         }
-
         void taidssanpham()
         {
             dssanpham.DataSource = hoadonDAO.Instance.dssanpham();
@@ -46,14 +51,6 @@ namespace QLYBANHANG.UC
             List<sanphamhd> list = hoadonDAO.Instance.timsanpham(masanpham);
             return list;
         }
-        public uchoadon()
-        {
-            InitializeComponent();
-            dgvtimsanpham.DataSource = dssanpham;
-            taidssanpham();
-            sanphamBinding();
-        }
-
         private void btntim_Click(object sender, EventArgs e)
         {
             dssanpham.DataSource = timsanpham(txbtimmasp.Text);
@@ -75,7 +72,6 @@ namespace QLYBANHANG.UC
             CultureInfo vn = new CultureInfo("vi-VN");
             txbtongtien.Text = tongtien.ToString("c", vn);
         }
-
         private void btnthem_Click(object sender, EventArgs e)
         {
             int sohd = hoadonDAO.Instance.ktrahoadon();
@@ -98,7 +94,6 @@ namespace QLYBANHANG.UC
             taidssanpham();
 
         }
-
         private void btnthanhtoan_Click(object sender, EventArgs e)
         {
             int sohd = hoadonDAO.Instance.xuatmahoadon();
@@ -115,7 +110,5 @@ namespace QLYBANHANG.UC
                 }
             }
         }
-
-        
     }
 }
