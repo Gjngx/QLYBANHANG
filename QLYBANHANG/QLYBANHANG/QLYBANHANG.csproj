@@ -174,7 +174,7 @@
       <DependentUpon>ucqlyhoadon.cs</DependentUpon>
     </Compile>
     <Compile Include="UC\ucquanlytk.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UC\ucquanlytk.Designer.cs">
       <DependentUpon>ucquanlytk.cs</DependentUpon>

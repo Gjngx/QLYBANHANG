@@ -64,52 +64,53 @@ namespace QLYBANHANG.DAO
 
         public DataTable xuatdstk()
         {
-            return DataProvider.Instance.ExecuteQuery("SELECT TENDANGNHAP , TENNHANVIEN , QUYEN FROM dbo.TAIKHOAN");
+            return DataProvider.Instance.ExecuteQuery("SELECT TAIKHOAN , HOTEN , PHANQUYEN FROM dbo.TAIKHOAN");
         }
-
-        public bool themtaikhoan(string tendn, string tennv, int quyen)
-        {
-            string q = string.Format("INSERT dbo.TAIKHOAN( TENDANGNHAP , TENNHANVIEN , QUYEN, PASS  ) VALUES(   '{0}' , N'{1}' , {2}, '20720532132149213101239102231223249249135100218' )", tendn, tennv, quyen);
-            int r = DataProvider.Instance.ExecuteNonQuery(q);
-            return r > 0;
-        }
-
-        public bool suataikhoai(string tendn, string tennv, int quyen)
-        {
-            string q = string.Format("UPDATE dbo.TAIKHOAN SET TENNHANVIEN = N'{0}' , QUYEN = {1} WHERE TENDANGNHAP = '{2}' ", tennv, quyen, tendn);
-            int r = DataProvider.Instance.ExecuteNonQuery(q);
-            return r > 0;
-        }
-        public bool xoataikhoan(string tendn)
-        {
-            string q = string.Format("DELETE dbo.TAIKHOAN WHERE TENDANGNHAP = '{0}'", tendn);
-            int r = DataProvider.Instance.ExecuteNonQuery(q);
-            return r > 0;
-        }
-
         public bool datlaimatkhau(string tendn, string mk)
         {
-            string q = string.Format("UPDATE dbo.TAIKHOAN SET PASS = '{0}' WHERE TENDANGNHAP = '{1}'", mk, tendn);
+            string q = string.Format("UPDATE dbo.TAIKHOAN SET MATKHAU = '{0}' WHERE TAIKHOAN = '{1}'", mk, tendn);
             int r = DataProvider.Instance.ExecuteNonQuery(q);
             return r > 0;
         }
+        public int timtaikhoan(string taikhoan)
+        {
+            string q = string.Format("SELECT COUNT (*) FROM DBO.TAIKHOAN WHERE TAIKHOAN = '{0}'", taikhoan);
 
-        public List<taikhoan> timtaikhoan(string tennv)
+            return (int)DataProvider.Instance.ExecuteScalar(q);
+        }
+        public List<taikhoan> timtaikhoanbanghoten(string hoten)
         {
             List<taikhoan> ds = new List<taikhoan>();
 
-            string query = string.Format("SELECT * FROM dbo.TAIKHOAN WHERE TENNHANVIEN LIKE N'%{0}%'", tennv);
+            string query = string.Format("SELECT * FROM dbo.TAIKHOAN WHERE HOTEN LIKE N'%{0}%'", hoten);
 
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
 
             foreach (DataRow item in data.Rows)
             {
-                taikhoan tk = new taikhoan(item);
-                ds.Add(tk);
+                taikhoan sp = new taikhoan(item);
+                ds.Add(sp);
             }
 
             return ds;
         }
-
+        public bool themtaikhoan(string tendn, string tennv, int quyen)
+        {
+            string q = string.Format("INSERT dbo.TAIKHOAN( TAIKHOAN , HOTEN , PHANQUYEN, MATKHAU  ) VALUES(   '{0}' , N'{1}' , {2}, '0' )", tendn, tennv, quyen);
+            int r = DataProvider.Instance.ExecuteNonQuery(q);
+            return r > 0;
+        }
+        public bool suataikhoai(string tendn, string tennv, int quyen)
+        {
+            string q = string.Format("UPDATE dbo.TAIKHOAN SET HOTEN = N'{0}' , PHANQUYEN = {1} WHERE TAIKHOAN = '{2}' ", tennv, quyen, tendn);
+            int r = DataProvider.Instance.ExecuteNonQuery(q);
+            return r > 0;
+        }
+        public bool xoataikhoan(string tendn)
+        {
+            string q = string.Format("DELETE dbo.TAIKHOAN WHERE TAIKHOAN = '{0}'", tendn);
+            int r = DataProvider.Instance.ExecuteNonQuery(q);
+            return r > 0;
+        }
     }
 }

@@ -19,9 +19,10 @@ namespace QLYBANHANG.DAO
         //Data Source=DESKTOP-GN6S3OC;Initial Catalog=QLYBANHANG;Integrated Security=True --giang
         //Data Source=DESKTOP-KM3F23R\\SQLSERVERPHAT;Initial Catalog=QLYBANHANG;Integrated Security=True --PHAT
         //Data Source=DESKTOP-GCSEIJD;Initial Catalog=QLYBANHANG;Integrated Security=True --PHUONG
+        //QUOCTAII\\THINHSQL -- thinh
         private DataProvider() { }
 
-        private String connectionSTR = "QUOCTAII\\THINHSQL";
+        private String connectionSTR = "Data Source=DESKTOP-GN6S3OC;Initial Catalog=QLYBANHANG;Integrated Security=True";
 
         public DataTable ExecuteQuery(string query, object[] parameter = null)
         {

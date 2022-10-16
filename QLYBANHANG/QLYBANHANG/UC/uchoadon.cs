@@ -108,6 +108,7 @@ namespace QLYBANHANG.UC
                     hoadonDAO.Instance.thanhtoan(sohd, (float)tongtien);
                     showhoadon();
                 }
+                else return;
             }
         }
     }
