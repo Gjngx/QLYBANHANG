@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraEditors;
+using QLYBANHANG.DAO;
 using QLYBANHANG.DTO;
 using System;
 using System.Collections.Generic;
@@ -13,33 +14,96 @@ using System.Windows.Forms;
 
 namespace QLYBANHANG.UC
 {
-    public partial class ucquanlytk : DevExpress.XtraEditors.XtraUserControl
+    public partial class ucquanlytk : Form
     {
-        private static ucquanlytk instance;
-        private object dstaikhoan;
+        BindingSource dstaikhoan = new BindingSource();
 
-        public static ucquanlytk Instance
-        {
-            get
-            {
-                if (instance == null)
-                    instance = new ucquanlytk();
-                return instance;
-            }
-        }
+        public taikhoan dangnhap;
+
+        public static Control Instance { get; internal set; }
+
         public ucquanlytk()
         {
             InitializeComponent();
+            dgvtaikhoan.DataSource = dstaikhoan;
+            taidstaikhoan();
+            taikhoanbinding();
+        }
+
+        #region methods
+        void taidstaikhoan()
+        {
+            dstaikhoan.DataSource = taikhoanDAO.Instance.xuatdstk();
+        }
+
+        void taikhoanbinding()
+        {
+            txbtendangnhap.DataBindings.Add(new Binding("Text", dgvtaikhoan.DataSource, "tendangnhap"));
+            txbtennhanvien.DataBindings.Add(new Binding("Text", dgvtaikhoan.DataSource, "tennhanvien"));
+            nudquyen.DataBindings.Add(new Binding("Value", dgvtaikhoan.DataSource, "quyen"));
+        }
+
+        void themtk(string tendn, string tennv, int quyen)
+        {
+            if (taikhoanDAO.Instance.themtaikhoan(tendn, tennv, quyen))
+            {
+                MessageBox.Show("Thêm tài khoản thành công");
+            }
+            else
+                MessageBox.Show("Thêm tài khoản thất bại!");
+            taidstaikhoan();
+        }
+
+        void suatk(string tendn, string tennv, int quyen)
+        {
+            if (taikhoanDAO.Instance.suataikhoai(tendn, tennv, quyen))
+            {
+                MessageBox.Show("Cập nhật tài khoản thành công");
+            }
+            else
+                MessageBox.Show("Cập nhật tài khoản thất bại!");
+            taidstaikhoan();
+        }
+
+        void xoatk(string tendn)
+        {
+            if (dangnhap.Tendangnhap.Equals(tendn))
+            {
+                MessageBox.Show("Bạn không thể xóa tài khoản của bạn!");
+                return;
+            }
+            if (taikhoanDAO.Instance.xoataikhoan(tendn))
+            {
+                MessageBox.Show("Xóa tài khoản thành công");
+            }
+            else 
+                MessageBox.Show("Xóa tài khoản thất bại!");
+            taidstaikhoan();
+        }
+        List<taikhoan> timtaikhoantheoten(string tennv)
+        {
+            List<taikhoan> list = taikhoanDAO.Instance.timtaikhoan(tennv);
+            return list;
+        }
+
+        void datlaimk(string tendn, string mk)
+        {
+            if (txbmatkhau.Text.Length < 8)
+            {
+                MessageBox.Show("Mật khẩu cần đủ 8 ký tự!");
+                return;
+            }
+            if (taikhoanDAO.Instance.datlaimatkhau(tendn, mk))
+            {
+                MessageBox.Show("Đặt lại mật khẩu thành công");
+            }
+            else
+                MessageBox.Show("Đặt lại mật khẩu thất bại!");
         }
 
         private void btnxem_Click(object sender, EventArgs e)
         {
             taidstaikhoan();
-        }
-
-        private void taidstaikhoan()
-        {
-            throw new NotImplementedException();
         }
 
         private void btnthem_Click(object sender, EventArgs e)
@@ -51,11 +115,6 @@ namespace QLYBANHANG.UC
             taidstaikhoan();
         }
 
-        private void themtk(string tendn, string tennv, int quyen)
-        {
-            throw new NotImplementedException();
-        }
-
         private void btnsua_Click(object sender, EventArgs e)
         {
             string tendn = txbtendangnhap.Text;
@@ -65,21 +124,11 @@ namespace QLYBANHANG.UC
             taidstaikhoan();
         }
 
-        private void suatk(string tendn, string tennv, int quyen)
-        {
-            throw new NotImplementedException();
-        }
-
         private void btnxoa_Click(object sender, EventArgs e)
         {
             string tendn = txbtendangnhap.Text;
             xoatk(tendn);
             taidstaikhoan();
-        }
-
-        private void xoatk(string tendn)
-        {
-            throw new NotImplementedException();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -99,19 +148,15 @@ namespace QLYBANHANG.UC
             taidstaikhoan();
         }
 
-        private void datlaimk(string tendn, string datamk)
+        private void btntim_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            dstaikhoan.DataSource = timtaikhoantheoten(txbtim.Text);
         }
 
-        private void Btntim_Click(object sender, EventArgs e)
+        private void btnhuy_Click(object sender, EventArgs e)
         {
-            dstaikhoan = timtaikhoantheoten(txbtim.Text);
-        }
 
-        private object timtaikhoantheoten(string text)
-        {
-            throw new NotImplementedException();
         }
     }
+    #endregion
 }
